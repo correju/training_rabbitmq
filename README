@@ -1,0 +1,10 @@
+# Project Name
+
+## How to Run the Docker
+
+1. Build and run Docker image:
+  ```sh
+  docker compose up -d
+  ```
+
+
