@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  rue-rabbit:
+    image: rabbitmq:4.0.5-management-alpine
+    container_name: rue-rabbit
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: rue_Admin
+      RABBITMQ_DEFAULT_PASS: Ru3R4bb1t**
+    volumes:
+      - ./rabbit_data:/var/lib/rabbitmq
