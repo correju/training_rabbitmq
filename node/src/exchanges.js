@@ -5,6 +5,7 @@ const password = process.env.RABBIT_PASS;
 const host = process.env.RABBITMQ_HOST || 'localhost';
 
 const callback = (consumer) => (msg) => {
+  msg.ack();
   console.log(`Received message in ${consumer} with key ${msg.fields.routingKey}: ${msg.content.toString()}`);
 };
 
@@ -18,8 +19,7 @@ const callback = (consumer) => (msg) => {
   const exchange = "inspections";
   const queue1 = "inspections_queue";
   const queue2 = "all_inspections_types";
-  const key1 = 'inspections.mount';
-  const key2 = 'inspections.*';
+
   /**
    * Create Queue if it does not exist already
    */
@@ -34,13 +34,15 @@ const callback = (consumer) => (msg) => {
   /**
    * Bind queue to exchange with routing key
    */
+  const key1 = 'inspections.mount';
+  const key2 = 'inspections.*';
   await channel.bindQueue(queue1, exchange, key1);
   await channel.bindQueue(queue2, exchange, key2);
 
   /**
    * Consume messages from queues
    */
-  await channel.consume(queue1, callback('consumer 1'), { noAck: true });
-  await channel.consume(queue2, callback('consumer 2'), { noAck: true });
+  await channel.consume(queue1, callback('consumer 1'), { noAck: false });
+  await channel.consume(queue2, callback('consumer 2'), { noAck: false });
 
 })();

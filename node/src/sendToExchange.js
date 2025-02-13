@@ -11,6 +11,8 @@ const startProcess = async() => {
 
   const key1 = 'inspections.inspection';
   const key2 = 'inspections.mount';
+  const key3 = 'work.mount';
+  const key4 = 'supplies.mount';
 
   const msg1 = {
     type: 'inspection',
@@ -24,12 +26,19 @@ const startProcess = async() => {
     name: 'Inspection type mount',
   };
 
+  const msg3 = {
+    type: 'cualQuierMAricada',
+    id: 3,
+    name: 'Inspection type mount',
+  };
+
   const exchange = "inspections";
 
   await channel.assertExchange(exchange, 'topic', { durable: false });
 
   channel.publish(exchange, key1, Buffer.from(JSON.stringify(msg1)));
   channel.publish(exchange, key2, Buffer.from(JSON.stringify(msg2)));
+  channel.publish(exchange, key3, Buffer.from(JSON.stringify(msg2)));
 
 };
 

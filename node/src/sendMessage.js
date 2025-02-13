@@ -30,7 +30,7 @@ const startProcess = async() => {
     },
   });
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 10; i++) {
     await sendToQue({
       channel: writeChannel,
       queue,
