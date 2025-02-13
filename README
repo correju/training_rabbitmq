@@ -1,12 +1,13 @@
 # Project Name
 
-## How to Run the Docker
+## How to Run Docker
 
-1. Build and run Docker image:
+1. Build and run the Docker image:
   ```sh
   docker compose up -d
   ```
 
-  This is a test repo just to teach the team to use Queues
+  This is a test repo just to teach the team how to use queues.
 
+## How did you like the training?
 
